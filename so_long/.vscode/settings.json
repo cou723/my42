@@ -1,0 +1,25 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "*.c": "c",
+        ".*lintrc": "json",
+        "mlx_int.h": "c",
+        "mlx.h": "c",
+        "get_next_line_private.h": "c",
+        "so_long.h": "c",
+        "stddef.h": "c",
+        "fcntl.h": "c",
+        "cstdlib": "c",
+        "stdbool.h": "c",
+        "stdio.h": "c",
+        "limits.h": "c",
+        "libft.h": "c",
+        "ft_printf.h": "c",
+        "private_ft_printf.h": "c",
+        "unistd.h": "c",
+        "get_next_line.h": "c"
+    },
+    "cSpell.words": [
+        "xxxxxxx"
+    ]
+}

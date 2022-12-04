@@ -1,0 +1,198 @@
+#include "libft.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define OK_MESSAGE "\x1b[32mOK\x1b[39m"
+#define NG_MESSAGE "\x1b[31mNG\x1b[39m"
+
+void	test_memchr(void);
+void	test_atoi(void);
+void	check_atoi(char *s);
+void	check_memchr(void *array, int c, size_t n);
+void	test_memmove(void);
+void	test_memmove_core(void *src, void *dest, size_t n);
+void	print_memory(void *ptr, size_t size);
+void	test_strlcat(void);
+void	check_strlcat(char *dest, char *src, size_t len, char *expect_str);
+void	test_memset(void);
+void	test_strnstr(void);
+void	check_strnstr(char *dest, char *src, size_t len, char *expect_str);
+void	test_strncmp(void);
+void	check_strncmp(const char *s1, const char *s2, size_t len, int expect);
+void	test_itoa(void);
+void	check_itoa(int n, char *expect_str);
+void	test_bzero(void);
+
+int	main(void)
+{
+	// test_atoi();
+	// test_memchr();
+	// test_memmove();
+	// test_strlcat();
+	// test_memset();
+	// test_strncmp();
+	// test_strnstr();
+	//test_itoa();
+	//test_bzero();
+	char **splitted = ft_split("i am a human",' ');
+	while (*splitted != NULL)
+	{
+		printf("%s\n", *splitted);
+		splitted++;
+	}
+
+	return (0);
+}
+
+
+void	test_itoa(void)
+{
+	puts("itoa:\n");
+	check_itoa(100, "100");
+	check_itoa(-100, "-100");
+	check_itoa(0, "0");
+	check_itoa(2147483647, "2147483647");
+	check_itoa(-2147483648, "-2147483648");
+}
+
+void	check_itoa(int check_num, char *expect_str)
+{
+	char *ans = ft_itoa(check_num);
+	printf("\targs: n = %d result:%s(%s)\n",
+		   check_num,
+		   strcmp(ans, expect_str) == 0 ? OK_MESSAGE : NG_MESSAGE,
+		   ans);
+}
+
+void	test_atoi(void)
+{
+	printf("atoi:\n");
+	check_atoi("hello");
+	check_atoi("-100");
+	check_atoi("100");
+	check_atoi("+100");
+	check_atoi("\t+-100");
+	printf("\n");
+}
+
+void	check_atoi(char *s)
+{
+	printf("	args:%s result:%s \n",
+		   s,
+		   ft_atoi(s) == atoi(s) ? OK_MESSAGE : NG_MESSAGE);
+}
+
+void	test_memchr(void)
+{
+	int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
+	printf("memchr:\n");
+	check_memchr((void *)tab, -1, 7);
+	check_memchr((void *)"bonjour", 'o', 7);
+	check_memchr((void *)"bonjour", 'j', 7);
+	printf("\n");
+}
+
+void	check_memchr(void *array, int c, size_t n)
+{
+	// print_array((int *)array, n);
+	printf("	args: %d, %ld result:%s \n",
+		   c,
+		   n,
+		   ft_memchr(array, c, n) == memchr(array, c, n) ? OK_MESSAGE
+														 : NG_MESSAGE);
+}
+
+void	test_memmove(void)
+{
+	char src[] = "lorem ipsum dolor sit amet";
+	char *dest = src + 1;
+	ft_memmove(dest, src, 27);
+	print_memory(dest, 16);
+	printf("\n");
+}
+
+void	test_strlcat(void)
+{
+	printf("strlcat:\n");
+	char dest1[12] = "012";
+	char src1[] = "abcde";
+	check_strlcat(dest1, src1, 11, "012abcde");
+	puts(" ");
+}
+
+void	check_strlcat(char *dest, char *src, size_t len, char *expect_str)
+{
+	int expect_length = strlen(dest) + strlen(src);
+	printf("	args: dest=%s, src=%s, len=%ld ", dest, src, len);
+	int ans = ft_strlcat(dest, src, len);
+
+	printf("result:%s ( %d ) %s ( %s ) \n",
+		   ans == expect_length ? OK_MESSAGE : NG_MESSAGE,
+		   ans,
+		   strcmp(dest, expect_str) == 0 ? OK_MESSAGE : NG_MESSAGE,
+		   dest);
+}
+
+void	test_memset(void)
+{
+	char *p = malloc(sizeof(char) * 10);
+	ft_memset(p, '\0', 10);
+	ft_memset(p, 'a', 10);
+
+	char *p2 = NULL;
+	ft_memset(p2, '\0', 5);
+
+	printf("%s\n", p);
+}
+
+void	test_strnstr(void)
+{
+	printf("strnstr:\n");
+	check_strnstr("abcdef", "cde", 3, NULL);
+	check_strnstr(
+		"lorem ipsum dolor sit amet", "lorem", 15, "lorem ipsum dolor sit amet");
+	check_strnstr("lorem ipsum dolor sit amet", "dolor", 15, "dolor sit amet");
+}
+
+void	check_strnstr(char *big, char *little, size_t len, char *expect_ptr)
+{
+	printf("	args: big=%s, little=%s, len=%ld ", big, little, len);
+	char *ans = ft_strnstr(big, little, len);
+
+	printf(
+		"%s (%s)", strcmp(ans, expect_ptr) == 0 ? OK_MESSAGE : NG_MESSAGE, ans);
+}
+
+void	test_strncmp(void)
+{
+	printf("strncmp:");
+	printf("%d\n", ft_strncmp("test\200", "test\0", 6));
+}
+
+void	print_memory(void *ptr, size_t size)
+{
+	size_t			i;
+	unsigned char	*p;
+
+	i = 0;
+	p = (unsigned char *)ptr;
+	while (i < size)
+	{
+		printf("%c", p[i]);
+		i++;
+	}
+	printf("\n");
+}
+
+int	get_digit(int num)
+{
+	int digit = 0;
+	while (num)
+	{
+		num /= 10;
+		digit++;
+	}
+	return (digit);
+}

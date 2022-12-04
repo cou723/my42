@@ -1,0 +1,3 @@
+SHA1 ハッシュ (対象 C:\Users\Cou\VirtualBox VMs\Debian3\Debian3.vdi):
+46d40aac34b830e18fd04ee49fcf9dc4f4980d24
+CertUtil: -hashfile コマンドは正常に完了しました。

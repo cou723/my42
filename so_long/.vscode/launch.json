@@ -1,0 +1,26 @@
+{
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [
+        "/media/sf_so_long/maps/error_maps/empty.ber"
+      ],
+      "stopAtEntry": true,
+      "log": true,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "program": "/media/sf_so_long/so_long",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "gdb",
+      "preLaunchTask": "My build",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "externalConsole": false
+    }
+  ]
+}

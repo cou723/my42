@@ -1,0 +1,40 @@
+{
+  "editor.insertSpaces": false,
+  "C_Cpp.vcFormat.space.aroundAssignmentOperator": "insert",
+  "editor.mouseWheelZoom": true,
+  "editor.detectIndentation": false,
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.clang_format_path": "",
+  "files.associations": {
+    ".*lintrc": "json",
+    "*.c": "c",
+    "*.h": "c",
+    "*.delete": "c"
+  },
+  "editor.codeLensFontSize": 14,
+  "cSpell.words": ["combn", "xxxxxxx"],
+  "editor.tabSize": 4,
+  "editor.renderWhitespace": "all",
+  "files.trimTrailingWhitespace": true,
+  "42header.username": "xxxxxxx",
+  "42header.email": "xxxxxxxxxx@xxxxxxxxx",
+  "editor.defaultFormatter": "xaver.clang-format",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": ".c",
+        "isAsync": true,
+        "cmd": "norminette-formatter-plus ${file}"
+      },
+      {
+        "match": ".h",
+        "isAsync": true,
+        "cmd": "norminette-formatter-plus ${file}"
+      }
+    ]
+  }
+}

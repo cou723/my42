@@ -1,0 +1,76 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Clang",
+            "type": "process",
+            "command": "clang.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "${fileDirname}/main_${fileBasenameNoExtension}.c",
+                "${fileDirname}/ft_atoi.c",
+                "${fileDirname}/ft_bzero.c",
+                "${fileDirname}/ft_calloc.c",
+                "${fileDirname}/ft_isalnum.c",
+                "${fileDirname}/ft_isalpha.c",
+                "${fileDirname}/ft_isascii.c",
+                "${fileDirname}/ft_isdigit.c",
+                "${fileDirname}/ft_isprint.c",
+                "${fileDirname}/ft_itoa.c",
+                "${fileDirname}/ft_memchr.c",
+                "${fileDirname}/ft_memcmp.c",
+                "${fileDirname}/ft_memcpy.c",
+                "${fileDirname}/ft_memmove.c",
+                "${fileDirname}/ft_memset.c",
+                "${fileDirname}/ft_putchar_fd.c",
+                "${fileDirname}/ft_putendl_fd.c",
+                "${fileDirname}/ft_putnbr_fd.c",
+                "${fileDirname}/ft_putstr_fd.c",
+                "${fileDirname}/ft_split.c",
+                "${fileDirname}/ft_strchr.c",
+                "${fileDirname}/ft_strdup.c",
+                "${fileDirname}/ft_striteri.c",
+                "${fileDirname}/ft_strjoin.c",
+                "${fileDirname}/ft_strlcat.c",
+                "${fileDirname}/ft_strlcpy.c",
+                "${fileDirname}/ft_strlen.c",
+                "${fileDirname}/ft_strmapi.c",
+                "${fileDirname}/ft_strncmp.c",
+                "${fileDirname}/ft_strnstr.c",
+                "${fileDirname}/ft_strrchr.c",
+                "${fileDirname}/ft_strtrim.c",
+                "${fileDirname}/ft_substr.c",
+                "${fileDirname}/ft_tolower.c",
+                "${fileDirname}/ft_toupper.c",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang アクティブなファイルのビルド",
+            "command": "/usr/bin/clang",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "デバッガーによって生成されたタスク。"
+        }
+    ]
+}
