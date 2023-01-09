@@ -1,0 +1,11 @@
+cub3D
+*.a
+*.o
+.DS_Store
+*.md
+*.pdf
+*.sh
+*.cpp
+*.gen
+images/
+.vscode/
