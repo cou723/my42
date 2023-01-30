@@ -1,45 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xxxxxxx <xxxxxxxxxx@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 01:07:32 by xxxxxxx           #+#    #+#             */
+/*   Updated: 2022/09/20 12:50:06 by xxxxxxx          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "libft.h"
 #include "push_swap.h"
+#include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <unistd.h>
 
-bool	is_only_num(char *str);
+void	run_push_swap(t_stacks *stacks);
+int		error_process(bool checker_mode, char **strs);
+bool	set_for_checker(int *argc, const char **argv[]);
 
-int	main(int argc, char const *argv[])
+int	main(int argc, const char *argv[])
 {
-	if (argc == 0)
-		ft_printf(ERROR_MESSAGE);
-	if (!is_numeric(argv))
-		ft_printf(ERROR_MESSAGE);
-	return (0);
+	t_stacks	stacks;
+
+	if (argc == 1)
+		return (0);
+	if (set_for_checker(&argc, &argv) == false)
+		exit(1);
+	if (!is_correct_args(argc, argv))
+	{
+		ft_putstr_fd(ERROR_MESSAGE, 2);
+		exit(1);
+	}
+	init(argc, argv, &stacks);
+	run_push_swap(&stacks);
+	cmd_optimize(stacks.cmd_list);
+	cmd_list_put(stacks);
+	exit(0);
 }
 
-bool	is_only_num(char *str)
+bool	set_for_checker(int *argc, const char **argv[])
 {
-	while (*str != '\0')
+	if (is_checker_args(*argc, *argv))
 	{
-		if (!('0' <= *str && *str <= '9'))
+		if (set_args(argc, argv) == false)
 			return (false);
-		str++;
 	}
 	return (true);
 }
 
-size_t	int_digit(int num)
+bool	is_correct_args(int argc, const char *argv[])
 {
-	size_t	digit;
-
-	digit = 0;
-	if (num == 0)
-		return (1);
-	while (num /= 10)
-	{
-		digit++;
-	}
+	if (argc == 1)
+		return (false);
+	if (!is_num_args(argc, argv))
+		return (false);
+	if (!can_atoi_args(argc, argv))
+		return (false);
+	if (!exists_duplicate_args(argc, argv))
+		return (false);
+	return (true);
 }
 
-bool	try_atoi(const char *str)
+void	run_push_swap(t_stacks *stacks)
 {
-	if (ft_strlen(str) >= int_digit(INT_MAX))
+	sort(stacks->a, stacks->b, &(stacks->cmd_list));
+}
+
+int	error_process(bool checker_mode, char **strs)
+{
+	if (checker_mode)
+		free_splitted_strs(strs);
+	return (1);
 }

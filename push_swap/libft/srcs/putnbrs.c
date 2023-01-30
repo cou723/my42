@@ -32,7 +32,7 @@ size_t	put_u_nbr_base(size_t n, const char *letters)
 	size_t			total;
 
 	total = 0;
-	base = strlen(letters);
+	base = ft_strlen(letters);
 	n_digit = get_digit(n, base);
 	while (n_digit > 0)
 	{

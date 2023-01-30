@@ -1,0 +1,17 @@
+*.md
+*.pdf
+checker_linux
+checker_OS
+push_swap
+!srcs/push_swap
+libftprintf.a
+*.o
+*a.out
+obj/
+push_swap_tester/
+test/
+*.sh
+includes/test.h
+output
+.vscode/
+includes/test.h

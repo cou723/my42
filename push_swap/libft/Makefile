@@ -1,35 +1,41 @@
-NAME = libftprintf.a
-INCLUDE = libft
-LIBFT_DIR = libs/libft/
-LIBFT_FILES = ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
-SRC_DIR = srcs/
-SRC_FILES = puts.c putnbrs.c ft_printf.c
-LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILES))
-SRCS = $(LIBFT) $(addprefix $(SRC_DIR), $(SRC_FILES))
+NAME = 			libftprintf.a
+
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
-OBJS = $(SRCS:.c=.o)
+INCLUDE = 		-I libft/
+CFLAGS = 		-Wall -Werror -Wextra
 
-all: $(NAME)
+LIBFT_DIR = 	libft/
+SRC_DIR = 		srcs/
 
-$(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+SRC_FILES = 	puts.c putnbrs.c ft_printf.c
+SRC = 			$(LIBFT) $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ = 			$(SRC:.c=.o)
+
+all: do_libft $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT_DIR)libft.a
+	@cp $(LIBFT_DIR)libft.a $(NAME)
+	@ar r $(NAME) $(OBJ)
+	@echo "\\nFT_PRINTF COMPLETE\\n"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+
+do_libft:
+	@$(MAKE) bonus -C $(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJS)
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@rm -f $(OBJ)
+	@echo "\\nCleaned $(NAME) object files\\n"
 
 fclean: clean
-	rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@rm -f $(NAME)
+	@echo "\\nCleaned $(NAME)\\n"
 
 re: fclean all
-
-test: $(NAME) test.c
-	$(CC) -g3 test.c libftprintf.a -o test
-	bash ./test.sh
-
 
 debug: test
 	gdb ./test

@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.c": "c",
-        ".*lintrc": "json",
-        "push_swap.h": "c"
-    }
-}

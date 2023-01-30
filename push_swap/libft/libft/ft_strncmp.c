@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xxxxxxx <xxxxxxx@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: xxxxxxx <xxxxx.java@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 12:32:33 by xxxxxxx           #+#    #+#             */
-/*   Updated: 2022/12/04 21:48:31 by xxxxxxx          ###   ########.fr       */
+/*   Updated: 2022/09/14 10:54:28 by xxxxxxx          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t len)
 	char	*u_s1;
 	char	*u_s2;
 
-	u_s1 = (unsigned char)*s1;
-	u_s2 = (unsigned char)*s2;
+	u_s1 = (char *)s1;
+	u_s2 = (char *)s2;
 	while (len != 0 && *s1 != '\0' && *s2 != '\0')
 	{
 		if (*s1 != *s2)
