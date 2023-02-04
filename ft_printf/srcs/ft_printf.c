@@ -14,27 +14,27 @@
 
 static size_t	variable_output(char specifier, va_list output_ap);
 
-// int	ft_printf(const char *format, ...)
-// {
-// 	va_list	ap;
-// 	size_t	total;
+int	ft_printf(const char *format, ...)
+{
+	va_list	ap;
+	size_t	total;
 
-// 	va_start(ap, format);
-// 	total = 0;
-// 	while (*format != '\0')
-// 	{
-// 		if (*format == '%')
-// 		{
-// 			total += variable_output(*(format + 1), ap);
-// 			format++;
-// 		}
-// 		else
-// 			total += put_char(*format);
-// 		format++;
-// 	}
-// 	va_end(ap);
-// 	return (total);
-// }
+	va_start(ap, format);
+	total = 0;
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			total += variable_output(*(format + 1), ap);
+			format++;
+		}
+		else
+			total += put_char(*format);
+		format++;
+	}
+	va_end(ap);
+	return (total);
+}
 
 static size_t	variable_output(char specifier, va_list output_ap)
 {
