@@ -1,4 +1,4 @@
-NAME     = ex0
+NAME     = ex02
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS     = main.cpp
 OBJS     = $(SRCS:.cpp=.o)

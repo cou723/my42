@@ -1,8 +1,9 @@
 #ifndef ARRAY_T
 #define ARRAY_T
+#include <exception>
 
 template <typename T>
-Array<T>::Array() : _array(0), _size(0) {}
+Array<T>::Array() : _array(new T[0]), _size(0) {}
 
 template <typename T>
 Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {
@@ -30,7 +31,9 @@ Array<T>& ::Array<T>::operator=(const Array<T>& a) {
 
 template <typename T>
 T& ::Array<T>::operator[](size_t i) {
-    if (i > _size)
+    if(_size == 0)
+        throw std::exception();
+    if (i >= _size)
         throw std::exception();
     return _array[i];
 }
