@@ -14,8 +14,6 @@ services:
         networks:
             - network
         restart: always
-        extra_hosts:
-            - "username.42.fr:127.0.0.1"
 
     mariadb:
         container_name: mariadb
